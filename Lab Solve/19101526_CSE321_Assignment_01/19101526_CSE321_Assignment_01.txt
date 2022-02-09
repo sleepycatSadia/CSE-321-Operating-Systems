@@ -1,0 +1,39 @@
+﻿Create a file excalibur.txt in Desktop
+=> cd Desktop                  //changing directory to Desktop
+=> cat > excalibur.txt         //creating file
+
+Change the permission of the file to owner: read, write and execute, group: read and execute and for other users execute only.
+=>chmod 751 excalibur.txt
+
+Create a directory named mydirectory
+=> mkdir mydirectory
+
+
+Copy the file excalibur.txt to mydirectory
+=> cp excalibur.txt mydirectory
+
+Delete the file excalibur.txt from desktop
+=> rm excalibur.txt mydirectory
+
+
+Delete all the files and folders from a directory
+=> cd directoryName       	   //changing directory to directoryName
+=> rm -rf*                         //delete all the files and folders from a directory
+     					without deleting the directory
+
+
+Find all the .txt files in a folder
+=> find  -type f -name ‘*.txt’          //-type f  means find only files, not directories
+                                        //-name '*.txt'  means find all .txt files
+
+
+Check for a given string in multiple files (N.B. Choose a random string of your choice)
+=>grep -Ir givenRandomString
+
+
+Show only lines 12-18 of a .txt file
+=> sed -n -e 12,18  fileName.txt
+
+
+Show all the files in a directory
+=> ls -a                         //showing all (hidden+non-hidden) files

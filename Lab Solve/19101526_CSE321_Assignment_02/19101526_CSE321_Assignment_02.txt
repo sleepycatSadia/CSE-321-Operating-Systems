@@ -1,0 +1,117 @@
+Task1
+ 
+ #!/bin/bash  
+echo "Enter BRACU ID"
+read id 
+length=${#id};
+if [[ $length -gt "8" ]];
+  then
+   echo "Invalid BRACU ID"
+else
+  firstHalfOfID=${id:0:${#id}/2}
+  secondHalfOfID=${id:${#id}/2}
+  year=${firstHalfOfID:0:${#firstHalfOfID}/2}
+  tempSecondTwoDigits=${firstHalfOfID:${#firstHalfOfID}/2}
+  semester=${tempSecondTwoDigits:0:${#tempSecondTwoDigits}/2} 
+  tempThirdtwoDigits=${secondHalfOfID:0:${#secondHalfOfID}/2}
+  department=${tempThirdtwoDigits:0:${#tempThirdtwoDigits}/2}
+ 
+ sem="";
+  case $semester in
+ "1")  sem="Spring";;
+ "2")  sem="Fall";;
+ "3")  sem="Summer";;
+  esac
+  dept="";
+   case $department in
+ "1")  dept="from the Dept. of CSE";;
+ *)  dept="not from the Dept. of CSE";;
+   esac
+ case $dept in
+ "from the Dept. of CSE")  echo "The student is $dept enrolled in $sem 20$year.";;
+ "not from the Dept. of CSE")  echo "The student is $dept .";;
+   esac
+ 
+   fi
+ 
+Task 2
+ 
+#!/bin/bash  
+echo "Enter your name"
+read name
+for file in *.txt;
+ do
+ echo $name >> "$file"
+done
+ 
+Task 3
+ 
+#!/bin/bash  
+ 
+function isHappynumber {
+   local -i n="$1"
+   local checked=()
+   while (( n != 1 )); 
+   do
+     if [ -n "${checked[$n]}" ]; 
+     then
+        return 1
+     fi
+     checked[n]=1
+     let n="$(numSquareSum "$n")"
+   done
+   return 0
+}
+function numSquareSum {
+  local -i n="$1" 
+  squareSum=0
+  while (( n ));
+   do
+    local -i d=n%10
+    let squareSum+=d*d
+    let n=n/10
+  done
+  echo "$squareSum"
+}
+ 
+echo "Enter an integer"
+read n
+if isHappynumber "$n"; then
+    echo "$n is a Happy Prime !"
+else
+    echo "$n is not Happy Prime :("
+fi
+ 
+ 
+Task 4
+ 
+#!/bin/bash 
+echo "Enter a number"
+read number
+ 
+if [ $(( $number % 3 )) -eq 0 -a $(( $number % 2 )) -eq 0 ] ;
+then echo "Hello"
+elif [ $(( $number % 3 )) -eq 0 -o $(( $number % 2 )) -eq 0 ] ;
+then echo "Nihao"
+else
+  echo "Hola"
+fi
+
+Task 5
+#!/bin/bash
+echo "Which operation would you like to do?"
+read operationType
+echo "Enter Operand 1"
+read op1
+echo "Enter Operand 2"
+read op2
+
+result=0
+case $operationType in
+"+") result=$(( $op1 + $op2 )) ;;
+"-") result=$(( $op1 - $op2 )) ;;
+"*") result=$(( $op1 * $op2 )) ;;
+"/") result=$(( $op1 / $op2 )) ;;
+
+esac
+echo "The result is $result"
